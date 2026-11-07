@@ -95,6 +95,53 @@ public class Main {
                     case 25:
                         ejercicio25();
                         break;
+                    case 26:
+                        ejercicio26();
+                        break;
+                    case 27:
+                        ejercicio27();
+                        break;
+                    case 28:
+                        ejercicio28();
+                        break;
+                    case 29:
+                        ejercicio29();
+                        break;
+                    case 30:
+                        ejercicio30();
+                        break;
+                    case 31:
+                        ejercicio31();
+                        break;
+                    case 32:
+                        ejercicio32();
+                        break;
+                    case 33:
+                        ejercicio33();
+                        break;
+                    case 34:
+                        ejercicio34();
+                        break;
+                    case 35:
+                        ejercicio35();
+                        break;
+                    case 36:
+                        ejercicio36();
+                        break;
+                    case 37:
+                        ejercicio37();
+                        break;
+                    case 38:
+                        ejercicio38();
+                        break;
+                    case 39:
+                        ejercicio39();
+                        break;
+                    case 40:
+                        ejercicio40();
+                        break;
+
+                        break;
                     default:
                         System.out.println("Opcion invalida, ingrese un numero entre 0 y 25");
                         break;
@@ -109,13 +156,7 @@ public class Main {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Menu
-    // ------------------------------------------------------------------
     static void mostrarMenu() {
-        System.out.println("==============================================");
-        System.out.println("   TALLER DE PRACTICA DE PROGRAMACION");
-        System.out.println("==============================================");
         System.out.println(" 1) Unir dos textos");
         System.out.println(" 2) Saludo con nombre");
         System.out.println(" 3) Cuadrado de un numero");
@@ -141,6 +182,21 @@ public class Main {
         System.out.println("23) Secuencia creciente o decreciente");
         System.out.println("24) Dia de la semana");
         System.out.println("25) Invertir texto");
+        System.out.println("26) Primera letra mayuscula");
+        System.out.println("27) Penultima palabra");
+        System.out.println("28) Si el segundo contiene al primero");
+        System.out.println("29) Palindromo");
+        System.out.println("30) area poligono");
+        System.out.println("31)  10 primero naturales");
+        System.out.println("32) 10 primeros impares");
+        System.out.println("33) 10 primeros pares");
+        System.out.println("34) entero positivo");
+        System.out.println("35) decimal a binario");
+        System.out.println("36) binario a decimal");
+        System.out.println("37) patron");
+        System.out.println("38) filas patron ");
+        System.out.println("39) Triangulo invertido de *");
+        System.out.println("40) Problema final: equipaje del BOING 747");
         System.out.println(" 0) Salir");
         System.out.println("----------------------------------------------");
     }
@@ -530,18 +586,341 @@ public class Main {
 
     // Punto 25: pide el texto y usa la funcion invertirTexto
     static void ejercicio25() {
-        System.out.println("Ingrese el texto que desea invertir");
-        String textoLargo = texto.nextLine();
-        System.out.println("Texto invertido: " + invertirTexto(textoLargo));
+        System.out.println("Ingrese el texto a invertir");
+        String textooriginal = texto.nextLine();
+        System.out.println("Texto invertido: " + invertirTexto(textooriginal));
     }
 
     public static String invertirTexto(String textoOriginal) {
         String textoInvertido = "";
-
+        //inicia desde la ultima posicion del texto luego en la parte de textoinvertido="" almacena cada letra a medidad que lo recorre
         for (int i = textoOriginal.length() - 1; i >= 0; i--) {
             textoInvertido = textoInvertido + textoOriginal.charAt(i);
         }
 
         return textoInvertido;
+    }
+    static void ejercicio26(){
+        System.out.println("Ingrese el texto");
+        String textolarguito =texto.nextLine();
+        //esto es si por ejemplo el usuario no pone nada y ejecuta
+        if(textolarguito != null && !textolarguito.isEmpty()){
+            String[] palabras = textolarguito.split(" ");
+            StringBuilder resultado = new StringBuilder();
+
+            // 2. Recorremos cada palabra del arreglo
+            for (String palabra : palabras) {
+                if (!palabra.isEmpty()) {
+                    // Aplicamos tu misma lógica (substring) a cada palabra
+                    String palabraMayuscula = palabra.substring(0, 1).toUpperCase() + palabra.substring(1);
+                    resultado.append(palabraMayuscula).append(" ");
+                }
+            }
+            System.out.println("Resultado: " + resultado.toString().trim());
+        } else {
+            System.out.println("El texto ingresado esta vacio");
+        }
+    }
+    static void ejercicio27(){
+        System.out.println("Ingrese el texto");
+        String textolarguito = texto.nextLine();
+
+        String[] palabras = textolarguito.split(" ");
+        String ultima = "";
+        String penultima = "";
+
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                penultima = ultima;
+                ultima = palabra;
+            }
+        }
+
+        if (penultima.isEmpty()) {
+            System.out.println("El texto debe tener al menos dos palabras");
+        } else {
+            System.out.println("La penultima palabra es: " + penultima);
+        }
+    }
+    static void ejercicio28(){
+        System.out.println("Ingrese el primer texto");
+        String texto111 = texto.nextLine();
+        System.out.println("Ingrese el segundo texto");
+        String texto222 = texto.nextLine();
+        if(texto222.contains(texto111)){
+            System.out.println("EL TEXTO 2 SI CONTIENE AL TEXTO 1 ");
+
+        } else{
+            System.out.println("EL TEXTO 2 NO CONTIENE EL TEXTO 1");
+        }
+    }
+    static void ejercicio29(){
+        System.out.println("Ingrese una palabra");
+        String palabra = texto.next();
+
+        if (esPalindromo(palabra)) {
+            System.out.println("La palabra es palindromo");
+        } else {
+            System.out.println("La palabra no es palindromo");
+        }
+    }
+
+
+    public static boolean esPalindromo(String palabra) {
+        String palabraMinuscula = palabra.toLowerCase();
+        String palabraInvertida = invertirTexto(palabraMinuscula);
+
+        if (palabraMinuscula.equals(palabraInvertida)) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+    static void ejercicio30(){
+        System.out.println("Ingrese la cantidad de vertices del poligono (minimo 3)");
+        int nvertices = texto.nextInt();
+
+        if (nvertices < 3) {
+            System.out.println("Un poligono tiene minimo 3 vertices");
+        } else {
+            double[] x = new double[nvertices];
+            double[] y = new double[nvertices];
+
+            for (int i = 0; i < nvertices; i++) {
+                System.out.println("Ingrese la coordenada x del vertice " + (i + 1));
+                x[i] = texto.nextDouble();
+                System.out.println("Ingrese la coordenada y del vertice " + (i + 1));
+                y[i] = texto.nextDouble();
+            }
+
+            System.out.println("El area del poligono es: " + calcularAreaPoligono(x, y));
+        }
+    }
+
+    public static double calcularAreaPoligono(double[] x, double[] y) {
+        double suma = 0;
+        int ultimo = x.length - 1;
+
+
+        for (int i = 0; i < ultimo; i++) {
+            suma = suma + (x[i] * y[i + 1]) - (x[i + 1] * y[i]);
+        }
+
+
+        suma = suma + (x[ultimo] * y[0]) - (x[0] * y[ultimo]);
+
+        double area = Math.abs(suma) / 2;
+        return area;
+    }
+
+
+    static void ejercicio31(){
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i);
+        }
+    }
+
+
+    static void ejercicio32(){
+        int nimpar = 1;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(nimpar);
+            nimpar = nimpar + 2;
+        }
+    }
+
+
+    static void ejercicio33(){
+        int npar = 2;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(npar);
+            npar = npar + 2;
+        }
+    }
+
+
+    static void ejercicio34(){
+        int numeropositivo = 0;
+
+        while (numeropositivo <= 0) {
+            System.out.println("Ingrese un numero entero positivo");
+            if (texto.hasNextInt()) {
+                numeropositivo = texto.nextInt();
+                if (numeropositivo <= 0) {
+                    System.out.println("Valor no permitido, debe ser un entero positivo");
+                }
+            } else {
+
+                texto.next();
+                System.out.println("Valor no permitido, debe ser un entero positivo");
+            }
+        }
+
+        System.out.println("El numero ingresado es: " + numeropositivo);
+    }
+
+
+    static void ejercicio35(){
+        System.out.println("Ingrese un numero decimal entero positivo");
+        int numerodecimal = texto.nextInt();
+
+        if (numerodecimal < 0) {
+            System.out.println("El numero debe ser positivo");
+        } else if (numerodecimal == 0) {
+            System.out.println("El numero en binario es: 0");
+        } else {
+            String binario = "";
+
+            while (numerodecimal > 0) {
+                binario = (numerodecimal % 2) + binario;
+                numerodecimal = numerodecimal / 2;
+            }
+            System.out.println("El numero en binario es: " + binario);
+        }
+    }
+
+
+    static void ejercicio36(){
+        System.out.println("Ingrese un numero binario");
+        long numerobinario = texto.nextLong();
+        long copia = numerobinario;
+        long decimal = 0;
+        long potencia = 1;
+        int digitosinvalidos = 0;
+
+
+        while (copia > 0) {
+            long digito = copia % 10;
+            if (digito > 1) {
+                digitosinvalidos = digitosinvalidos + 1;
+            }
+            decimal = decimal + digito * potencia;
+            potencia = potencia * 2;
+            copia = copia / 10;
+        }
+
+        if (numerobinario < 0 || digitosinvalidos > 0) {
+            System.out.println("El numero ingresado no es binario (solo puede tener 0 y 1)");
+        } else {
+            System.out.println("El numero en decimal es: " + decimal);
+        }
+    }
+
+
+    static void ejercicio37(){
+        for (int fila = 1; fila <= 10; fila++) {
+            for (int numero = 1; numero <= fila; numero++) {
+                System.out.print(numero);
+            }
+            System.out.println();
+        }
+    }
+
+
+    static void ejercicio38(){
+        System.out.println("Ingrese el numero de filas");
+        int nfilas = texto.nextInt();
+
+        for (int fila = 1; fila <= nfilas; fila++) {
+            for (int columna = 1; columna <= fila; columna++) {
+                System.out.print("@");
+            }
+            System.out.println();
+        }
+    }
+
+
+    static void ejercicio39(){
+        System.out.println("Ingrese el numero de filas");
+        int nfilas = texto.nextInt();
+
+        for (int fila = nfilas; fila >= 1; fila--) {
+            for (int columna = 1; columna <= fila; columna++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+
+    static void ejercicio40(){
+        double capacidad = 18000;
+        double valordolar = 0;
+
+        while (valordolar <= 0) {
+            System.out.println("Ingrese el valor de un dolar en pesos");
+            valordolar = texto.nextDouble();
+        }
+
+        int totalbultos = 0;
+        double pesototal = 0;
+        double pesomaspesado = 0;
+        double pesomasliviano = 0;
+        double ingresopesos = 0;
+        double pesobulto = 1;
+
+
+        while (pesobulto != 0 && pesototal < capacidad) {
+            System.out.println("Ingrese el peso del bulto en kg (0 para terminar)");
+            pesobulto = texto.nextDouble();
+
+            if (pesobulto < 0) {
+                System.out.println("El peso no puede ser negativo");
+            } else if (pesobulto > 500) {
+                System.out.println("Bulto rechazado: supera los 500 kg");
+            } else if (pesototal + pesobulto > capacidad) {
+                System.out.println("Bulto rechazado: solo le quedan " + (capacidad - pesototal) + " kg de capacidad al avion");
+            } else if (pesobulto > 0) {
+                double valorkilo;
+                if (pesobulto <= 25) {
+                    valorkilo = 0;
+                } else if (pesobulto <= 300) {
+                    valorkilo = 1500;
+                } else {
+                    valorkilo = 2500;
+                }
+                double valorbulto = pesobulto * valorkilo;
+
+                totalbultos = totalbultos + 1;
+                pesototal = pesototal + pesobulto;
+                ingresopesos = ingresopesos + valorbulto;
+
+                if (totalbultos == 1) {
+                    pesomaspesado = pesobulto;
+                    pesomasliviano = pesobulto;
+                } else {
+                    if (pesobulto > pesomaspesado) {
+                        pesomaspesado = pesobulto;
+                    }
+                    if (pesobulto < pesomasliviano) {
+                        pesomasliviano = pesobulto;
+                    }
+                }
+
+                System.out.println("Bulto aceptado. Valor a pagar: " + Math.round(valorbulto) + " pesos. Peso total en el avion: " + pesototal + " kg");
+            }
+        }
+
+        if (pesototal >= capacidad) {
+            System.out.println("El avion esta lleno");
+        }
+
+        System.out.println("---------- RESUMEN DEL VUELO ----------");
+        if (totalbultos == 0) {
+            System.out.println("No se ingreso ningun bulto");
+        } else {
+            double promedio = pesototal / totalbultos;
+            double ingresodolares = ingresopesos / valordolar;
+            System.out.println("a. Total de bultos ingresados: " + totalbultos);
+            System.out.println("b. Bulto mas pesado: " + pesomaspesado + " kg");
+            System.out.println("   Bulto mas liviano: " + pesomasliviano + " kg");
+            System.out.println("c. Peso promedio de los bultos: " + (Math.round(promedio * 100) / 100.0) + " kg");
+            System.out.println("d. Ingreso en pesos: " + Math.round(ingresopesos));
+            System.out.println("   Ingreso en dolares: " + (Math.round(ingresodolares * 100) / 100.0));
+
+
+        }
     }
 }
